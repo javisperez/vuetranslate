@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Vue Translate Test Page</title>
+        <script src="node_modules/vue/dist/vue.js"></script>
+        <script src="node_modules/vue-translate-plugin/dist/vue-translate.min.js"></script>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                background: #EDEDED;
+                font: 14px Helvetica, Arial, sans-serif;
+            }
+
+            header {
+                background: #ffc200;
+                padding: 10px;
+                display: flex;
+                justify-content: space-between;
+                color: #333;
+            }
+
+            header div span {
+                cursor: pointer;
+                color: #5151cc;
+            }
+
+            header div span:hover {
+                text-decoration: underline;
+            }
+
+            header div span.current {
+                font-weight: bold;
+            }
+
+            .sample-content {
+                background: white;
+                padding: 20px;
+                margin: 20px auto 0;
+                width: 80%;
+                box-shadow: 0 4px 10px #999;
+            }
+
+            .form label {
+                display: block;
+                margin-bottom: 10px;
+            }
+            .form.input input {
+                padding: 10px;
+                font-size: 14px;
+                width: 300px;
+                margin-top: 20px;
+                margin-bottom: 20px;
+                display: block;
+            }
+
+            .form.result {
+                background: #8BC34A;
+                padding: 20px;
+                color: #FFF;
+                font-size: 18px;
+                font-weight: lighter;
+                margin-bottom: 40px;
+            }
+
+            h2 {
+                margin-top: 40px;
+            }
+
+            .no-translation {
+                font-weight: bold;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="app"></div>
+        <script src="script.js"></script>
+    </body>
+</html>
