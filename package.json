@@ -1,5 +1,5 @@
 {
-    "name": "vue-translate",
+    "name": "vue-translate-plugin",
     "version": "1.0.0",
     "description": "Basic translations plugins for VueJS v2.0+",
     "main": "dist/vue-translate.min.js",
