@@ -69,7 +69,7 @@ Vue.component('sample-content', {
                 <h2 v-translate>Reactivity</h2>
 
                 <div class="form input">
-                    <label v-translate>And it's completely reactive, let's try with dynamic inputs!</label>
+                    <label v-translate>And it's completely reactive, let's try with dynamic content!</label>
                     <small v-translate>(Remember to change the language to spanish to see the translations)</small>
 
                     <input type="text" v-model="sampleInput" placeholder="Try typing 'hello world'" />
@@ -78,8 +78,8 @@ Vue.component('sample-content', {
                 <div class="form result">{{ t(sampleInput) }}</div>
 
                 <div class="form input">
-                    <label>Or even computed properties.</label>
-                    <small>(Remember to change the language to spanish to see the translations)</small>
+                    <label v-translate>Or even computed properties.</label>
+                    <small v-translate>(Remember to change the language to spanish to see the translations)</small>
 
                     <input type="text" v-model="computedInput" placeholder="Try typing 'hello world' again" />
                 </div>
