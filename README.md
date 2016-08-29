@@ -1,6 +1,6 @@
 ## VueTranslate
 
-A VueJS (2.0+) plugin for basic translations.
+A VueJS (1.x, 2.0+) plugin for basic translations.
 
 ### What is this?
 
@@ -13,10 +13,6 @@ Yes and no, Vue-i18n is a great plugin and is a lot more complete than this. Thi
 ### What to expect?
 
 Just translations, it is that simple.
-
-### Why VueJS v2.0 only?
-
-Because it's the current version i'm using, so i haven't test it on VueJS 1.x but i think it won't work because the "init()" method is called "beforeCreate()" on VueJS 2.x.
 
 ## Example
 ```javascript

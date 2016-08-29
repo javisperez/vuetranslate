@@ -1,7 +1,7 @@
 /**
  * VueTranslate plugin
  *
- * Handle basic translations in VueJS 2.0
+ * Handle basic translations in VueJS
  *
  * This is a plugin to handle basic translations for a component in VueJS.
  *
@@ -19,6 +19,8 @@ function VueTranslate() {}
 
 // Install the method
 VueTranslate.install = function (Vue) {
+    let version = Vue.version[0];
+
     if (!vm) {
         vm = new Vue({
             data() {
@@ -73,7 +75,7 @@ VueTranslate.install = function (Vue) {
 
     // Mixin to read locales and add the translation method and directive
     Vue.mixin({
-        beforeCreate() {
+        [version === '1' ? 'init' : 'beforeCreate']() {
             this.$translate.setLocales(this.$options.locales);
         },
 
