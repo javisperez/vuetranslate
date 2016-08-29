@@ -17,7 +17,7 @@ Just translations, it is that simple.
 ## Example
 ```javascript
 import Vue from 'vue';
-import VueTranslate from 'vue-translate';
+import VueTranslate from 'vue-translate-plugin';
 
 Vue.use(VueTranslate);
 
