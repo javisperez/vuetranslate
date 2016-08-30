@@ -1,14 +1,8 @@
 {
     "name": "vue-translate-plugin",
-    "version": "1.0.3",
+    "version": "1.0.31",
     "description": "Basic translations plugins for VueJS (1.x, 2.0)",
     "main": "dist/vue-translate.min.js",
-    "files": [
-        "dist/vue.common.js",
-        "dist/vue.js",
-        "dist/vue.min.js",
-        "src"
-    ],
     "repository": {
         "type": "git",
         "url": "git+https://github.com/javisperez/vuetranslate.git"
@@ -26,6 +20,7 @@
         "name": "Javis Perez",
         "email": "javisperez@gmail.com"
     },
+    "readme": "README.md",
     "license": "MIT",
     "bugs": {
         "url": "https://github.com/javisperez/vuetranslate/issues"
