@@ -1,34 +1,41 @@
 {
-    "name": "vue-translate-plugin",
-    "version": "1.0.3",
-    "description": "Basic translations plugins for VueJS (1.x, 2.0)",
-    "main": "dist/vue-translate.min.js",
-    "files": [
-        "dist/vue.common.js",
-        "dist/vue.js",
-        "dist/vue.min.js",
-        "src"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/javisperez/vuetranslate.git"
-    },
-    "keywords": [
-        "vue",
-        "vuejs",
-        "translate",
-        "vue-translate",
-        "vuetranslate",
-        "locales",
-        "plugin"
-    ],
-    "author": {
-        "name": "Javis Perez",
-        "email": "javisperez@gmail.com"
-    },
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/javisperez/vuetranslate/issues"
-    },
-    "homepage": "https://github.com/javisperez/vuetranslate#readme"
+  "name": "vue-translate-plugin",
+  "version": "1.1.0",
+  "description": "Basic translations plugins for VueJS (1.x, 2.0)",
+  "main": "dist/vue-translate.common.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/javisperez/vuetranslate.git"
+  },
+  "keywords": [
+    "vue",
+    "vuejs",
+    "translate",
+    "vue-translate",
+    "vuetranslate",
+    "locales",
+    "plugin"
+  ],
+  "author": {
+    "name": "Javis Perez",
+    "email": "javisperez@gmail.com"
+  },
+  "readme": "README.md",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/javisperez/vuetranslate/issues"
+  },
+  "homepage": "https://github.com/javisperez/vuetranslate#readme",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "babel-preset-es2015-loose-rollup": "^7.0.0",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-es2015-loose-rollup": "^7.0.0",
+    "replace-in-file": "^2.0.1",
+    "rollup": "^0.35.11",
+    "rollup-plugin-babel": "^2.6.1",
+    "uglify-js": "^2.7.3"
+  }
 }
