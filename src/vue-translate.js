@@ -30,6 +30,7 @@ const VueTranslate = {
                 methods: {
                     setLang(val) {
                         this.current = val;
+                        this.$emit('translate:language', val);
                     },
 
                     setLocales(locales) {
