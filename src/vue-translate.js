@@ -5,7 +5,6 @@ var vm = null;
 const VueTranslate = {
 
     // Install the method
-
     install(Vue) {
         const version = Vue.version[0];
 
@@ -19,6 +18,12 @@ const VueTranslate = {
                 },
 
                 computed: {
+                    // Current selected language
+                    lang() {
+                        return this.current;
+                    },
+
+                    // Current locale values
                     locale() {
                         if (!this.locales[this.current])
                             return null;
@@ -28,11 +33,22 @@ const VueTranslate = {
                 },
 
                 methods: {
+                    // Set a language as current
                     setLang(val) {
+                        if (this.current !== val) {
+                            if (this.current === '') {
+                                this.$emit('language:init', val);
+                            } else {
+                                this.$emit('language:changed', val);
+                            }
+                        }
+
                         this.current = val;
-                        this.$emit('translate:language', val);
+
+                        this.$emit('language:modified', val);
                     },
 
+                    // Set a locale tu use
                     setLocales(locales) {
                         if (!locales)
                             return;
@@ -47,6 +63,8 @@ const VueTranslate = {
                         }
 
                         this.locales = Object.create(newLocale);
+
+                        this.$emit('locales:loaded', locales);
                     },
 
                     text(t) {
@@ -69,6 +87,7 @@ const VueTranslate = {
             },
 
             methods: {
+                // An alias for the .$translate.text method
                 t(t) {
                     return this.$translate.text(t);
                 }
@@ -85,6 +104,11 @@ const VueTranslate = {
                 }.bind(vm)
             }
         });
+
+        // Global method for loading locales
+        Vue.locales = (locales) => {
+            vm.$translate.setLocales(locales);
+        };
     }
 };
 

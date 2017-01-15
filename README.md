@@ -1,4 +1,4 @@
-## VueTranslate
+## VueTranslate v1.2.0
 
 A VueJS (1.x, 2.0+) plugin for basic translations.
 
@@ -15,7 +15,7 @@ Yes and no, Vue-i18n is a great plugin and is a lot more complete than this. Thi
 Just translations, it is that simple.
 
 ## Example
-```javascript
+```js
 import Vue from 'vue';
 import VueTranslate from 'vue-translate-plugin';
 
@@ -30,7 +30,7 @@ var myComp = Vue.extend({
     mounted() {
         // Define what language you want to use.
         // This can be called in something like a header with a language selector menu
-        // Or any other case, doesnt need to be called in all components, but
+        // Or any other case, doesn't need to be called in all components, but
         // at least in one, so it sets the global language of the plugin
     	this.$translate.setLang('es_DO');
     },
@@ -55,3 +55,78 @@ var vm = new Vue({
 });
 ```
 
+## Usage
+### Loading translations
+You can do this in three different ways:
+
+- A `locales` option in your component:
+```js
+Vue.component({
+	...
+	locales: {
+		spanish: {
+			'hello world': 'hola mundo'
+		}
+	},
+	...
+})
+```
+- Inside a component's method:
+```js
+Vue.component({
+	methods: {
+		loadMysuperTranslation() {
+			this.$translate.setLocales({
+				spanish: {
+					'hello world': 'hola mundo'
+				}
+			});
+		}
+	}
+});
+```
+- Globally when loading the plugin:
+```js
+Vue.use(VueTranslate);
+
+Vue.locales({
+	spanish: {
+		'hello world': 'hola mundo'
+	}
+});
+```
+
+### Changing the language to use
+
+Use the `setLang` method of the `$translate` property, like this:
+```js
+Vue.component({
+	methods: {
+		showAppInSpanish() {
+			this.$translate.setLang('spanish');
+		}
+	}
+});
+```
+
+### Events
+
+You can listen to custom events emitted by the `$translate` property:
+
+```js
+this.$translate.$on('language:change', language => {
+	console.log('The user choose '+language);
+})
+```
+
+##### language:init
+When the first language is set.
+
+##### language:changed
+When the language to use was changed from the previous value.
+
+##### language:modified
+Everytime a language is changed, either is the first time or not.
+
+##### locales:loaded
+When locales are loaded either by any of the 3 options

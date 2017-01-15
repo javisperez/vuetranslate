@@ -1,5 +1,5 @@
 /**
- * VueTranslate plugin v1.1.0
+ * VueTranslate plugin v1.2.0
  *
  * Handle basic translations in VueJS
  *
@@ -17,7 +17,6 @@ var vm = null;
 var VueTranslate = {
 
     // Install the method
-
     install: function (Vue) {
         var _Vue$mixin;
 
@@ -34,6 +33,13 @@ var VueTranslate = {
 
 
                 computed: {
+                    // Current selected language
+                    lang: function () {
+                        return this.current;
+                    },
+
+
+                    // Current locale values
                     locale: function () {
                         if (!this.locales[this.current]) return null;
 
@@ -42,9 +48,23 @@ var VueTranslate = {
                 },
 
                 methods: {
+                    // Set a language as current
                     setLang: function (val) {
+                        if (this.current !== val) {
+                            if (this.current === '') {
+                                this.$emit('language:init', val);
+                            } else {
+                                this.$emit('language:changed', val);
+                            }
+                        }
+
                         this.current = val;
+
+                        this.$emit('language:modified', val);
                     },
+
+
+                    // Set a locale tu use
                     setLocales: function (locales) {
                         if (!locales) return;
 
@@ -57,6 +77,8 @@ var VueTranslate = {
                         }
 
                         this.locales = Object.create(newLocale);
+
+                        this.$emit('locales:loaded', locales);
                     },
                     text: function (t) {
                         if (!this.locale || !this.locale[t]) {
@@ -75,6 +97,7 @@ var VueTranslate = {
         Vue.mixin((_Vue$mixin = {}, _Vue$mixin[version === '1' ? 'init' : 'beforeCreate'] = function () {
             this.$translate.setLocales(this.$options.locales);
         }, _Vue$mixin.methods = {
+            // An alias for the .$translate.text method
             t: function (t) {
                 return this.$translate.text(t);
             }
@@ -87,6 +110,11 @@ var VueTranslate = {
                 el.innerText = text;
             }.bind(vm)
         }, _Vue$mixin));
+
+        // Global method for loading locales
+        Vue.locales = function (locales) {
+            vm.$translate.setLocales(locales);
+        };
     }
 };
 
