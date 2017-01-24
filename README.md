@@ -114,7 +114,7 @@ Vue.component({
 You can listen to custom events emitted by the `$translate` property:
 
 ```js
-this.$translate.$on('language:change', language => {
+this.$translate.$on('language:changed', language => {
 	console.log('The user choose '+language);
 })
 ```
