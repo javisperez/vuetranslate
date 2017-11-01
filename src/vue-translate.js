@@ -109,6 +109,11 @@ const VueTranslate = {
         Vue.locales = (locales) => {
             vm.$translate.setLocales(locales);
         };
+
+        // Global method for setting languages
+        Vue.lang = (lang) => {
+            vm.$translate.setLang(lang);
+        };
     }
 };
 
