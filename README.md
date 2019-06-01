@@ -26,7 +26,7 @@ var myComp = Vue.extend({
 	        {{ t('Hello World') }}
 	        <span v-translate>How are you?</span>
 	    </div>`,
-    
+
     mounted() {
         // Define what language you want to use.
         // This can be called in something like a header with a language selector menu
@@ -46,9 +46,9 @@ var myComp = Vue.extend({
 
 var vm = new Vue({
 	el: '#app',
-	
+
 	components: {myComp},
-	
+
 	template: `<div>
 	    <my-comp></my-comp>
 	</div>`
@@ -117,6 +117,25 @@ You can listen to custom events emitted by the `$translate` property:
 this.$translate.$on('language:changed', language => {
 	console.log('The user choose '+language);
 })
+```
+
+### Parameters
+
+You can use the method `textWithParams` if you would like to insert parameters in your translation strings.
+
+```js
+this.$translate.textWithParams('translation.string', {
+  keyA: 'Glenn',
+  keyB: 'John'
+})
+
+{{ tWithParams('translation.string', { keyA: 'Glenn', keyB: 'John' }) }}
+
+// In locales.js
+'translation.string': 'My name is %keyA%. My brother is named %keyB%.'
+
+// Result
+'My name is Glenn. My brother is named John.'
 ```
 
 ##### language:init
