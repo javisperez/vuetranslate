@@ -84,6 +84,23 @@ var VueTranslate = {
                         }
 
                         return this.locale[t];
+                    },
+                    textWithParams: function (t) {
+                        var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+                        if (!this.locale || !this.locale[t]) {
+                            return t;
+                        }
+
+                        if (!this.params || this.params === null || typeof this.params === 'undefined') {
+                            return t;
+                        }
+
+                        Object.keys(params).forEach(function (key) {
+                            t = t.replace('%' + key + '%', params[key]);
+                        });
+
+                        return t;
                     }
                 }
             });
@@ -98,6 +115,9 @@ var VueTranslate = {
             // An alias for the .$translate.text method
             t: function (t) {
                 return this.$translate.text(t);
+            },
+            tWithParams: function (t, params) {
+                return this.$translate.text(t, params);
             }
         }, _Vue$mixin.directives = {
             translate: function (el) {
@@ -112,6 +132,11 @@ var VueTranslate = {
         // Global method for loading locales
         Vue.locales = function (locales) {
             vm.$translate.setLocales(locales);
+        };
+
+        // Global method for setting languages
+        Vue.lang = function (lang) {
+            vm.$translate.setLang(lang);
         };
     }
 };
