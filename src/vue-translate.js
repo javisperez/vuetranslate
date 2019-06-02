@@ -73,6 +73,22 @@ const VueTranslate = {
                         }
 
                         return this.locale[t];
+                    },
+
+                    textWithParams(t, params = null) {
+                        if (!this.locale || !this.locale[t]) {
+                            return t;
+                        }
+
+                        if (!this.params || this.params === null || typeof this.params === 'undefined') {
+                            return t;
+                        }
+
+                        Object.keys(params).forEach((key) => {
+                            t = t.replace(`%${key}%`, params[key]);
+                        });
+
+                        return t;
                     }
                 }
             });
@@ -90,6 +106,10 @@ const VueTranslate = {
                 // An alias for the .$translate.text method
                 t(t) {
                     return this.$translate.text(t);
+                },
+
+                tWithParams(t, params) {
+                    return this.$translate.text(t, params);
                 }
             },
 
