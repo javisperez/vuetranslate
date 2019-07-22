@@ -1,5 +1,5 @@
 /**
- * VueTranslate plugin v1.2.0
+ * VueTranslate plugin v1.3.1
  *
  * Handle basic translations in VueJS
  *

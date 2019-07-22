@@ -1,5 +1,5 @@
 /**
- * VueTranslate plugin v1.2.0
+ * VueTranslate plugin v1.3.1
  *
  * Handle basic translations in VueJS
  *
@@ -123,7 +123,7 @@ var VueTranslate = {
                 return this.$translate.text(t);
             },
             tWithParams: function (t, params) {
-                return this.$translate.textWithParams(t, params);
+                return this.$translate.text(t, params);
             }
         }, _Vue$mixin.directives = {
             translate: function (el) {

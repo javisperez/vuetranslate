@@ -1,11 +1,14 @@
 {
   "name": "vue-translate-plugin",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Basic translations plugins for VueJS (1.x, 2.0+)",
   "main": "dist/vue-translate.common.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/javisperez/vuetranslate.git"
+  },
+  "scripts": {
+    "build": "node build/build.js"
   },
   "keywords": [
     "vue",
