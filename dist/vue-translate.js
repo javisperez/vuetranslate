@@ -123,7 +123,7 @@ var VueTranslate = {
                 return this.$translate.text(t);
             },
             tWithParams: function (t, params) {
-                return this.$translate.text(t, params);
+                return this.$translate.textWithParams(t, params);
             }
         }, _Vue$mixin.directives = {
             translate: function (el) {
