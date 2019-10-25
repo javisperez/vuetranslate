@@ -68,7 +68,7 @@ const VueTranslate = {
                     },
 
                     text(t) {
-                        if (t in this.locale) {
+                        if (this.locale && t in this.locale) {
                             t = this.locale[t];
                         }
 
@@ -76,7 +76,7 @@ const VueTranslate = {
                     },
 
                     textWithParams(t, params = null) {
-                        if (t in this.locale) {
+                        if (this.locale && t in this.locale) {
                             t = this.locale[t];
                         }
 
