@@ -85,7 +85,7 @@ const VueTranslate = {
                         }
 
                         Object.keys(params).forEach((key) => {
-                            t = t.replace(`%${key}%`, params[key]);
+                            t = t.replace( new RegExp(`%${key}%`, 'g'), params[key]);
                         });
 
                         return t;
