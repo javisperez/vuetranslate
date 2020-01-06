@@ -79,8 +79,8 @@ const VueTranslate = {
                         if (!this.locale || !this.locale[t]) {
                             return t;
                         }
-
-                        if (!this.params || this.params === null || typeof this.params === 'undefined') {
+                        t = this.locale[t];
+                        if (!params || params === null || typeof params === 'undefined') {
                             return t;
                         }
 
@@ -109,7 +109,7 @@ const VueTranslate = {
                 },
 
                 tWithParams(t, params) {
-                    return this.$translate.text(t, params);
+                    return this.$translate.textWithParams(t, params);
                 }
             },
 
