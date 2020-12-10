@@ -85,20 +85,20 @@ var VueTranslate = {
                         this.$emit('locales:loaded', locales);
                     },
                     text: function (t) {
-                        if (!this.locale || !this.locale[t]) {
-                            return t;
+                        if (t in this.locale) {
+                            t = this.locale[t];
                         }
 
-                        return this.locale[t];
+                        return t;
                     },
                     textWithParams: function (t) {
                         var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
-                        if (!this.locale || !this.locale[t]) {
-                            return t;
+                        if (t in this.locale) {
+                            t = this.locale[t];
                         }
 
-                        if (!this.params || this.params === null || typeof this.params === 'undefined') {
+                        if (!params || params === null || typeof params === 'undefined') {
                             return t;
                         }
 
@@ -119,11 +119,14 @@ var VueTranslate = {
             this.$translate.setLocales(this.$options.locales);
         }, _Vue$mixin.methods = {
             // An alias for the .$translate.text method
-            t: function (t) {
-                return this.$translate.text(t);
+            t: function (t, params) {
+                return this.$translate.textWithParams(t, params);
             },
+
+
+            // backwards compatibility
             tWithParams: function (t, params) {
-                return this.$translate.text(t, params);
+                return this.$translate.textWithParams(t, params);
             }
         }, _Vue$mixin.directives = {
             translate: function (el) {

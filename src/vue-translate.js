@@ -68,24 +68,24 @@ const VueTranslate = {
                     },
 
                     text(t) {
-                        if (!this.locale || !this.locale[t]) {
-                            return t;
+                        if (this.locale && t in this.locale) {
+                            t = this.locale[t];
                         }
 
-                        return this.locale[t];
+                        return t;
                     },
 
                     textWithParams(t, params = null) {
-                        if (!this.locale || !this.locale[t]) {
-                            return t;
+                        if (this.locale && t in this.locale) {
+                            t = this.locale[t];
                         }
 
-                        if (!this.params || this.params === null || typeof this.params === 'undefined') {
+                        if (!params || params === null || typeof params === 'undefined') {
                             return t;
                         }
 
                         Object.keys(params).forEach((key) => {
-                            t = t.replace(`%${key}%`, params[key]);
+                            t = t.replace( new RegExp(`%${key}%`, 'g'), params[key]);
                         });
 
                         return t;
@@ -104,12 +104,13 @@ const VueTranslate = {
 
             methods: {
                 // An alias for the .$translate.text method
-                t(t) {
-                    return this.$translate.text(t);
+                t(t, params) {
+                    return this.$translate.textWithParams(t, params);
                 },
 
+                // backwards compatibility
                 tWithParams(t, params) {
-                    return this.$translate.text(t, params);
+                    return this.$translate.textWithParams(t, params);
                 }
             },
 
